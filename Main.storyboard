@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Y2-Xe-W1P">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Single Minis Collection View Controller-->
+        <scene sceneID="0Ma-7c-sKk">
+            <objects>
+                <collectionViewController id="zse-eE-Khz" customClass="MINSingleMinisCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Nbr-aJ-3bw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vVy-wA-LRX">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="miniCell" id="ZjI-fu-Cg8" customClass="MINSingleMiniDisplayCollectionViewCell">
+                                <rect key="frame" x="8" y="72" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="14-1" translatesAutoresizingMaskIntoConstraints="NO" id="J9X-Rw-Pnp">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <animations/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c08-EN-OTO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <animations/>
+                                        </imageView>
+                                    </subviews>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="J9X-Rw-Pnp" secondAttribute="bottom" id="0qn-aw-ezu"/>
+                                    <constraint firstItem="c08-EN-OTO" firstAttribute="top" secondItem="ZjI-fu-Cg8" secondAttribute="top" id="AfR-UO-fVS"/>
+                                    <constraint firstAttribute="bottom" secondItem="c08-EN-OTO" secondAttribute="bottom" id="L5M-wA-VbQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="c08-EN-OTO" secondAttribute="trailing" id="OIe-UM-bR5"/>
+                                    <constraint firstItem="J9X-Rw-Pnp" firstAttribute="leading" secondItem="ZjI-fu-Cg8" secondAttribute="leading" id="bcg-ej-Ta2"/>
+                                    <constraint firstItem="J9X-Rw-Pnp" firstAttribute="top" secondItem="ZjI-fu-Cg8" secondAttribute="top" id="uRO-oJ-wGG"/>
+                                    <constraint firstAttribute="trailing" secondItem="J9X-Rw-Pnp" secondAttribute="trailing" id="yIv-pW-J0x"/>
+                                    <constraint firstItem="c08-EN-OTO" firstAttribute="leading" secondItem="ZjI-fu-Cg8" secondAttribute="leading" id="yop-Uz-V7n"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="greyImage" destination="c08-EN-OTO" id="952-Sh-CqT"/>
+                                    <outlet property="miniImage" destination="J9X-Rw-Pnp" id="ckE-qr-NuM"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="zse-eE-Khz" id="yx2-7h-Lic"/>
+                            <outlet property="delegate" destination="zse-eE-Khz" id="MmT-SX-JKr"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZ9-fo-up5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Title" id="LgD-R8-zTr">
+                    <barButtonItem key="backBarButtonItem" title="Back" id="CPJ-bu-ah6"/>
+                </navigationItem>
+            </objects>
+            <point key="canvasLocation" x="1770" y="466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="S0g-Ha-35U">
+            <objects>
+                <navigationController id="1Y2-Xe-W1P" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fyc-hw-4Pu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jSw-Tk-Da5" kind="relationship" relationship="rootViewController" id="diP-Bz-O8y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDZ-Or-BW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="475"/>
+        </scene>
+        <!--Series Overview Table View Controller-->
+        <scene sceneID="zbH-6c-aXe">
+            <objects>
+                <tableViewController id="jSw-Tk-Da5" customClass="MINSeriesOverviewTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="U0J-cP-WtS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seriesCell" id="iXd-jY-XaW">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iXd-jY-XaW" id="JYu-bO-fY6">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <segue destination="zse-eE-Khz" kind="show" id="j8j-wc-ljn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jSw-Tk-Da5" id="SWm-kY-RyT"/>
+                            <outlet property="delegate" destination="jSw-Tk-Da5" id="Uzy-U0-hrP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ito-tR-kqC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6i1-KV-dvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Title" id="hVg-tk-jdd">
+                    <barButtonItem key="backBarButtonItem" title="Back" id="xy5-Z4-Bak"/>
+                </navigationItem>
+            </objects>
+            <point key="canvasLocation" x="1111" y="466"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="14-1" width="350" height="350"/>
+    </resources>
+</document>

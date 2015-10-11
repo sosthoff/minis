@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MINMiniDetailViewController.h
 //  minis
 //
 //  Created by Sebastian Osthoff on 11/10/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MINMiniDetailViewController : UIViewController
 
+-(id)initWithImage:(UIImage*)image;
 
 @end
-
