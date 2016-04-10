@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		271973A31BCA7F24004BA8B7 /* MINMiniDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271973A11BCA7F24004BA8B7 /* MINMiniDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		271973A41BCA7F24004BA8B7 /* MINMiniDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271973A21BCA7F24004BA8B7 /* MINMiniDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		271973A31BCA7F24004BA8B7 /* MINMiniDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271973A11BCA7F24004BA8B7 /* MINMiniDetailViewController.m */; };
+		271973A41BCA7F24004BA8B7 /* MINMiniDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271973A21BCA7F24004BA8B7 /* MINMiniDetailViewController.xib */; };
 		273012111BC9DE8E0093C679 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 273012101BC9DE8E0093C679 /* main.m */; };
 		273012141BC9DE8E0093C679 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 273012131BC9DE8E0093C679 /* AppDelegate.m */; };
-		2730121C1BC9DE8E0093C679 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2730121B1BC9DE8E0093C679 /* Assets.xcassets */; };
 		2730121F1BC9DE8E0093C679 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2730121D1BC9DE8E0093C679 /* LaunchScreen.storyboard */; };
-		273012291BC9E0FF0093C679 /* MINSingleMiniDisplayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273012271BC9E0FF0093C679 /* MINSingleMiniDisplayCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		2730122D1BC9E1AC0093C679 /* MINSingleMinisCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2730122C1BC9E1AC0093C679 /* MINSingleMinisCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
-		2730124F1BC9E68C0093C679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2730124E1BC9E68B0093C679 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		273012521BC9F3650093C679 /* MINSeriesOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273012511BC9F3650093C679 /* MINSeriesOverviewTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		2730127B1BC9F9480093C679 /* SeriesOverviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2730127A1BC9F9480093C679 /* SeriesOverviewTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		273012291BC9E0FF0093C679 /* MINSingleMiniDisplayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273012271BC9E0FF0093C679 /* MINSingleMiniDisplayCollectionViewCell.m */; };
+		2730122D1BC9E1AC0093C679 /* MINSingleMinisCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2730122C1BC9E1AC0093C679 /* MINSingleMinisCollectionViewController.m */; };
+		2730124F1BC9E68C0093C679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2730124E1BC9E68B0093C679 /* Main.storyboard */; };
+		273012521BC9F3650093C679 /* MINSeriesOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273012511BC9F3650093C679 /* MINSeriesOverviewTableViewController.m */; };
+		2730127B1BC9F9480093C679 /* SeriesOverviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2730127A1BC9F9480093C679 /* SeriesOverviewTableViewCell.m */; };
+		27418FE31C25D11D00FA62AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27418FE21C25D11D00FA62AF /* Assets.xcassets */; };
+		27F851AA1BE626380049A6F8 /* UIImage+Voodoo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F851A91BE626380049A6F8 /* UIImage+Voodoo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +29,6 @@
 		273012101BC9DE8E0093C679 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		273012121BC9DE8E0093C679 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		273012131BC9DE8E0093C679 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2730121B1BC9DE8E0093C679 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2730121E1BC9DE8E0093C679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		273012201BC9DE8E0093C679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		273012261BC9E0FF0093C679 /* MINSingleMiniDisplayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINSingleMiniDisplayCollectionViewCell.h; sourceTree = "<group>"; };
@@ -40,6 +40,9 @@
 		273012511BC9F3650093C679 /* MINSeriesOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINSeriesOverviewTableViewController.m; sourceTree = "<group>"; };
 		273012791BC9F9480093C679 /* SeriesOverviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeriesOverviewTableViewCell.h; sourceTree = "<group>"; };
 		2730127A1BC9F9480093C679 /* SeriesOverviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeriesOverviewTableViewCell.m; sourceTree = "<group>"; };
+		27418FE21C25D11D00FA62AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27F851A81BE626380049A6F8 /* UIImage+Voodoo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Voodoo.h"; sourceTree = "<group>"; };
+		27F851A91BE626380049A6F8 /* UIImage+Voodoo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Voodoo.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,14 +82,16 @@
 				273012511BC9F3650093C679 /* MINSeriesOverviewTableViewController.m */,
 				273012121BC9DE8E0093C679 /* AppDelegate.h */,
 				273012131BC9DE8E0093C679 /* AppDelegate.m */,
+				27418FE21C25D11D00FA62AF /* Assets.xcassets */,
 				273012261BC9E0FF0093C679 /* MINSingleMiniDisplayCollectionViewCell.h */,
 				273012271BC9E0FF0093C679 /* MINSingleMiniDisplayCollectionViewCell.m */,
 				2730122B1BC9E1AC0093C679 /* MINSingleMinisCollectionViewController.h */,
 				2730122C1BC9E1AC0093C679 /* MINSingleMinisCollectionViewController.m */,
 				271973A01BCA7F24004BA8B7 /* MINMiniDetailViewController.h */,
 				271973A11BCA7F24004BA8B7 /* MINMiniDetailViewController.m */,
+				27F851A81BE626380049A6F8 /* UIImage+Voodoo.h */,
+				27F851A91BE626380049A6F8 /* UIImage+Voodoo.m */,
 				271973A21BCA7F24004BA8B7 /* MINMiniDetailViewController.xib */,
-				2730121B1BC9DE8E0093C679 /* Assets.xcassets */,
 				2730121D1BC9DE8E0093C679 /* LaunchScreen.storyboard */,
 				273012201BC9DE8E0093C679 /* Info.plist */,
 				2730120F1BC9DE8E0093C679 /* Supporting Files */,
@@ -160,8 +165,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2730121F1BC9DE8E0093C679 /* LaunchScreen.storyboard in Resources */,
-				2730121C1BC9DE8E0093C679 /* Assets.xcassets in Resources */,
 				2730124F1BC9E68C0093C679 /* Main.storyboard in Resources */,
+				27418FE31C25D11D00FA62AF /* Assets.xcassets in Resources */,
 				271973A41BCA7F24004BA8B7 /* MINMiniDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +183,7 @@
 				273012141BC9DE8E0093C679 /* AppDelegate.m in Sources */,
 				273012111BC9DE8E0093C679 /* main.m in Sources */,
 				273012521BC9F3650093C679 /* MINSeriesOverviewTableViewController.m in Sources */,
+				27F851AA1BE626380049A6F8 /* UIImage+Voodoo.m in Sources */,
 				2730127B1BC9F9480093C679 /* SeriesOverviewTableViewCell.m in Sources */,
 				271973A31BCA7F24004BA8B7 /* MINMiniDetailViewController.m in Sources */,
 			);
@@ -284,6 +290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = minis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = foo.minis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +302,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = minis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = foo.minis;
 				PRODUCT_NAME = "$(TARGET_NAME)";

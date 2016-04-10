@@ -9,11 +9,19 @@
 #import "MINSingleMinisCollectionViewController.h"
 #import "MINSingleMiniDisplayCollectionViewCell.h"
 #import "MINMiniDetailViewController.h"
+#import "UIImage+Voodoo.h"
 
-@interface MINSingleMinisCollectionViewController ()
+@interface MINSingleMinisCollectionViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
+
+typedef NS_ENUM(NSInteger, MINViewMode){
+    MINViewModeCollection,
+    MINViewModeDiscovery,
+    MINViewModeShopping
+};
+
 
 @property (nonatomic, strong, readwrite) UIBarButtonItem* rightButton;
-@property (nonatomic, assign, readwrite) BOOL isViewModeDiscover;
+@property (nonatomic, assign, readwrite) MINViewMode viewMode;
 
 @end
 
@@ -25,22 +33,63 @@ static NSString * const reuseIdentifier = @"miniCell";
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Collection" style:UIBarButtonItemStylePlain target:self action:@selector(switchViewMode:)];
+        UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"View Mode" style:UIBarButtonItemStylePlain target:self action:@selector(switchViewMode:)];
         _rightButton = item;
         [self.navigationItem setRightBarButtonItem:item];
     }
     return self;
 }
 
-- (IBAction)switchViewMode:(id)sender {
-    if (self.isViewModeDiscover) {
-        self.isViewModeDiscover = NO;
-        self.rightButton.title = @"Collection";
-    } else {
-        self.isViewModeDiscover = YES;
-        self.rightButton.title = @"Discover";
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.navigationController.navigationBarHidden = NO;
+}
+
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return YES;
+}
+
+-(void)setViewMode:(MINViewMode)viewMode {
+    BOOL shouldReload = _viewMode != viewMode;
+    _viewMode = viewMode;
+    NSString* title;
+    switch (viewMode) {
+        case MINViewModeCollection:
+            title = @"Collection";
+            break;
+            
+        case MINViewModeDiscovery:
+            title = @"Discovery";
+            break;
+            
+        case MINViewModeShopping:
+            title = @"Shopping";
+            break;
     }
-            [self.collectionView reloadData];
+    if (self.rightButton) {
+        self.rightButton.title = title;
+    }
+    if (shouldReload) {
+        [self.collectionView reloadData];
+    }
+}
+
+- (IBAction)switchViewMode:(id)sender {
+    
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Discovery" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.viewMode = MINViewModeDiscovery;
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Collection" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.viewMode = MINViewModeCollection;
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Shopping" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.viewMode = MINViewModeShopping;
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -54,6 +103,15 @@ static NSString * const reuseIdentifier = @"miniCell";
     return 16;
 }
 
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    CGFloat hight = size.height - 64;
+    hight = hight/6;
+    
+    return CGSizeMake(hight, hight);
+}
+
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MINSingleMiniDisplayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 
@@ -61,15 +119,15 @@ static NSString * const reuseIdentifier = @"miniCell";
     UIImage* image = [UIImage imageNamed:imageName];
     cell.miniImage.image = image;
     
-//    image = [self replaceColor:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f] inImage:image withTolerance:15.0];
-    UIImage* greyImage = [self convertImageToGrayScale:image];
+    UIImage* greyImage = [image convertImageToGrayScale];
+    greyImage = [greyImage replaceColor:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f] withTolerance:10.0];
     cell.greyImage.image = greyImage;
     cell.gestureRecognizers = [self gestureRecognizersForCell];
-    BOOL owned = [self ownedStatuesOf:imageName];
-    if (self.isViewModeDiscover) {
+    BOOL owned = [self ownedStatusOf:imageName];
+    if (self.viewMode == MINViewModeDiscovery) {
         owned = YES;
     }
-    [cell displayAsOwned:owned animated:YES];
+    [cell displayAsOwned:owned animated:NO];
     
    return cell;
 }
@@ -101,14 +159,14 @@ static NSString * const reuseIdentifier = @"miniCell";
         MINSingleMiniDisplayCollectionViewCell* cell = (MINSingleMiniDisplayCollectionViewCell*)longRecognizer.view;
         NSIndexPath* indexPath = [self.collectionView indexPathForCell:cell];
         NSString* name = [self imageNameForIndexPath:indexPath];
-        BOOL newOwned = ![self ownedStatuesOf:name];
+        BOOL newOwned = ![self ownedStatusOf:name];
         [cell displayAsOwned:newOwned animated:YES];
         [self setOwnedStatus:newOwned miniName:name];
     }
 }
 
 
-- (BOOL)ownedStatuesOf:(NSString*)miniName {
+- (BOOL)ownedStatusOf:(NSString*)miniName {
     return [[NSUserDefaults standardUserDefaults] boolForKey:miniName];
 }
 
@@ -117,117 +175,6 @@ static NSString * const reuseIdentifier = @"miniCell";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
-- (UIImage *)convertImageToGrayScale:(UIImage *)image
-{
-    // Create image rectangle with current image width/height
-    CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
-    
-    // Grayscale color space
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-    
-    // Create bitmap content with current image size and grayscale colorspace
-    CGContextRef context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, colorSpace, kCGImageAlphaNone);
-    
-    // Draw image into current context, with specified rectangle
-    // using previously defined context (with grayscale colorspace)
-    CGContextDrawImage(context, imageRect, [image CGImage]);
-    
-    // Create bitmap image info from pixel data in current context
-    CGImageRef imageRef = CGBitmapContextCreateImage(context);
-    
-    // Create a new UIImage object
-    UIImage *newImage = [UIImage imageWithCGImage:imageRef];
-    
-    // Release colorspace, context and bitmap information
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
-    CFRelease(imageRef);
-    
-    // Return the new grayscale image
-    return newImage;
-}
-
-
-
-
-
-//- (UIImage*) replaceColor:(UIColor*)color inImage:(UIImage*)image withTolerance:(float)tolerance {
-//    CGImageRef imageRef = [image CGImage];
-//    
-//    NSUInteger width = CGImageGetWidth(imageRef);
-//    NSUInteger height = CGImageGetHeight(imageRef);
-//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//    
-//    NSUInteger bytesPerPixel = 4;
-//    NSUInteger bytesPerRow = bytesPerPixel * width;
-//    NSUInteger bitsPerComponent = 8;
-//    NSUInteger bitmapByteCount = bytesPerRow * height;
-//    
-//    unsigned char *rawData = (unsigned char*) calloc(bitmapByteCount, sizeof(unsigned char));
-//    
-//    CGContextRef context = CGBitmapContextCreate(rawData, width, height,
-//                                                 bitsPerComponent, bytesPerRow, colorSpace,
-//                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-//    CGColorSpaceRelease(colorSpace);
-//    
-//    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
-//    
-//    CGColorRef cgColor = [color CGColor];
-//    const CGFloat *components = CGColorGetComponents(cgColor);
-//    float r = components[0];
-//    float g = components[1];
-//    float b = components[2];
-//    //float a = components[3]; // not needed
-//    
-//    r = r * 255.0;
-//    g = g * 255.0;
-//    b = b * 255.0;
-//    
-//    const float redRange[2] = {
-//        MAX(r - (tolerance / 2.0), 0.0),
-//        MIN(r + (tolerance / 2.0), 255.0)
-//    };
-//    const float greenRange[2] = {
-//        MAX(g - (tolerance / 2.0), 0.0),
-//        MIN(g + (tolerance / 2.0), 255.0)
-//    };
-//    
-//    const float blueRange[2] = {
-//        MAX(b - (tolerance / 2.0), 0.0),
-//        MIN(b + (tolerance / 2.0), 255.0)
-//    };
-//    
-//    int byteIndex = 0;
-//    
-//    while (byteIndex < bitmapByteCount) {
-//        unsigned char red   = rawData[byteIndex];
-//        unsigned char green = rawData[byteIndex + 1];
-//        unsigned char blue  = rawData[byteIndex + 2];
-//        
-//        if (((red >= redRange[0]) && (red <= redRange[1])) &&
-//            ((green >= greenRange[0]) && (green <= greenRange[1])) &&
-//            ((blue >= blueRange[0]) && (blue <= blueRange[1]))) {
-//            // make the pixel transparent
-//            //
-//            rawData[byteIndex] = 0;
-//            rawData[byteIndex + 1] = 0;
-//            rawData[byteIndex + 2] = 0;
-//            rawData[byteIndex + 3] = 0;
-//        }
-//        
-//        byteIndex += 4;
-//    }
-//    
-//    CGImageRef imgref = CGBitmapContextCreateImage(context);
-//    UIImage *result = [UIImage imageWithCGImage:imgref];
-//    
-//    CGImageRelease(imgref);
-//    CGContextRelease(context);
-//    free(rawData);
-//    
-//    return result;
-//}
 
 
 @end

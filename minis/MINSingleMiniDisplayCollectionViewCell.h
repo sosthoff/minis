@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong, readwrite) IBOutlet UIImageView *miniImage;
 @property (weak, nonatomic) IBOutlet UIImageView *greyImage;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImage;
 
 - (void)displayAsOwned:(BOOL)owned animated:(BOOL)animated;
 

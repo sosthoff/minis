@@ -24,10 +24,12 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.miniImage.alpha = newMiniAlpha;
             self.greyImage.alpha = newGreyAlpha;
+            self.bgImage.alpha = newGreyAlpha;
         }];
     } else {
         self.miniImage.alpha = newMiniAlpha;
         self.greyImage.alpha = newGreyAlpha;
+        self.bgImage.alpha = newGreyAlpha;
     }
 }
 
